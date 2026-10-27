@@ -142,3 +142,22 @@
   letter-spacing: 0.32em;
   text-transform: lowercase;
 }
+
+@utility inp {
+  width: 100%;
+  border-radius: 0.375rem;
+  border: 1px solid var(--color-input);
+  background: var(--color-background);
+  padding: 0.3rem 0.5rem;
+  font-size: 0.85rem;
+  &:focus { outline: 2px solid var(--color-ring); outline-offset: -1px; }
+}
+
+@utility btn-ghost {
+  border-radius: 0.375rem;
+  border: 1px solid var(--color-border);
+  padding: 0.3rem 0.7rem;
+  font-size: 0.8rem;
+  &:hover { background: var(--color-secondary); }
+  &:disabled { opacity: 0.4; }
+}
