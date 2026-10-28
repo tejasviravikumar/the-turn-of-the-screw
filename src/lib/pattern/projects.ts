@@ -32,3 +32,9 @@ export function createProject(name = "Untitled pattern"): Project {
 export function deleteProject(id: string) {
   localStorage.setItem(KEY, JSON.stringify(listProjects().filter((p) => p.id !== id)));
 }
+
+import { bounds, piecePath } from "./geometry";
+export function piecesPreview(p: Project) {
+  const b = bounds(p.doc.pieces);
+  return { vb: `${b.minX - 2} ${b.minY - 2} ${b.maxX - b.minX + 4} ${b.maxY - b.minY + 4}`, paths: p.doc.pieces.map(piecePath) };
+}
