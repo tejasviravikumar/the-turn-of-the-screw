@@ -163,10 +163,10 @@ function Measurements({ time }: { time: React.MutableRefObject<number> }) {
 }
 
 const SHAPES: { pts: [number, number][]; to: [number, number, number]; rot: number }[] = [
-  { pts: [[0, 0], [0.08, 0.02], [0.2, 0.0], [0.22, -0.12], [0.24, -0.2], [0.21, -0.44], [0, -0.44]], to: [0.55, 1.62, 0.15], rot: 0.12 },
-  { pts: [[0, 0], [0.06, 0.03], [0.22, 0.02], [0.24, -0.22], [0.2, -0.44], [0, -0.44]], to: [0.95, 1.55, -0.1], rot: -0.08 },
-  { pts: [[0, -0.12], [0.15, 0], [0.3, -0.12], [0.26, -0.55], [0.04, -0.55]], to: [0.62, 1.05, 0.05], rot: -0.18 },
-  { pts: [[0.04, 0], [0.26, 0], [0.34, -0.5], [-0.04, -0.5]], to: [1.02, 1.0, -0.15], rot: 0.1 },
+  { pts: [[0, 0], [0.08, 0.02], [0.2, 0.0], [0.22, -0.12], [0.24, -0.2], [0.21, -0.44], [0, -0.44]], to: [0.4, 1.6, 0.1], rot: 0.12 },
+  { pts: [[0, 0], [0.06, 0.03], [0.22, 0.02], [0.24, -0.22], [0.2, -0.44], [0, -0.44]], to: [0.66, 1.56, -0.05], rot: -0.08 },
+  { pts: [[0, -0.12], [0.15, 0], [0.3, -0.12], [0.26, -0.55], [0.04, -0.55]], to: [0.42, 1.14, 0.05], rot: -0.18 },
+  { pts: [[0.04, 0], [0.26, 0], [0.34, -0.5], [-0.04, -0.5]], to: [0.68, 1.1, -0.1], rot: 0.1 },
 ];
 
 function PatternPieces({ time }: { time: React.MutableRefObject<number> }) {
@@ -187,7 +187,7 @@ function PatternPieces({ time }: { time: React.MutableRefObject<number> }) {
       const local = clamp01(p * 1.3 - i * 0.08);
       c.position.lerpVectors(from, new THREE.Vector3(...s.to), ease(local));
       c.rotation.set(0, -0.35 * (1 - local) + 0.15, s.rot * local);
-      c.scale.setScalar(0.25 + 0.75 * local);
+      c.scale.setScalar(0.2 + 0.42 * local);
       c.visible = t > 13;
       c.traverse((o) => {
         const m = (o as THREE.Mesh).material as THREE.Material & { opacity: number };
