@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef } from "react";
 import * as THREE from "three";
 
 /* ---------------- Cinematic timeline (single source of camera truth) ---------------- */
-export const TOTAL = 19;
+import { TOTAL } from "./timeline";
 type Key = { t: number; pos: [number, number, number]; tgt: [number, number, number] };
 const KEYS: Key[] = [
   { t: 0, pos: [0.09, 1.79, 0.27], tgt: [0.02, 1.76, 0] }, // 1 fabric macro
@@ -32,7 +32,6 @@ function timeToU(t: number) {
   }
   return 1;
 }
-export const shotAt = (t: number) => Math.min(7, 1 + KEYS.findIndex((k, i) => i > 0 && t < k.t) || 7);
 
 /* ---------------- Geometry ---------------- */
 const IVORY = "#F3E8D9";
