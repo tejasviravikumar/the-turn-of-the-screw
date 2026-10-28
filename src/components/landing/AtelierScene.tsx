@@ -38,7 +38,10 @@ const IVORY = "#F3E8D9";
 const CHAMP = "#E7C9B8";
 
 function lathe(profile: [number, number][], seg = 96) {
-  return new THREE.LatheGeometry(profile.map(([r, y]) => new THREE.Vector2(r, y)), seg);
+  // smooth the hand-authored profile so silhouettes read sculpted, not faceted
+  const c = new THREE.SplineCurve(profile.map(([r, y]) => new THREE.Vector2(r, y)));
+  const pts = c.getPoints(profile.length * 8).map((v) => new THREE.Vector2(Math.max(0, v.x), v.y));
+  return new THREE.LatheGeometry(pts, seg);
 }
 
 function Mannequin() {
